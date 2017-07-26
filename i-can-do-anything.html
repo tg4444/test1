@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style type="text/css">
+    /* Slideshow styles */
+  </style>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+
+  <script type="text/javascript">
+    function getParameter(name) {
+      if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+    }
+
+
+    $(document).ready(function () {
+      /*
+      var revealScript = $('<script/>').attr('src','https://rawgit.com/hakimel/reveal.js/master/js/reveal.js').attr('type','text/javascript');
+      $(document.body).append(revealScript);
+      */
+      /*
+      $.getScript( "https://rawgit.com/hakimel/reveal.js/master/js/reveal.js", function( data, textStatus, jqxhr ) {
+        alert(data);
+        Reveal.initialize();
+      });*/
+
+      $.getScript("https://rawgit.com/hakimel/reveal.js/master/js/reveal.js")
+        .done(function() {
+        Reveal.initialize();
+      });
+
+      
+      
+      // TEST URL: https://rawgit.com/tg4444/test1/master/PITCHME.md
+      /*
+      var url = getParameter('url');
+      $.get(url, function (data) {
+        $('#source').html(data);
+        Reveal.initialize();
+      });
+      */
+
+
+    });
+  </script>
+</head>
+
+<body>
+  <section data-markdown="https://rawgit.com/tg4444/test1/master/PITCHME.md">
+    <!--
+      data-separator="^\n\n\n"  
+         data-separator-vertical="^\n\n"  
+         data-separator-notes="^Note:"  
+         data-charset="iso-8859-15"
+         -->
+</section>
+  <!--<script type="text/javascript" src="https://rawgit.com/hakimel/reveal.js/master/js/reveal.js"></script>-->
+</body>
+
+</html>
