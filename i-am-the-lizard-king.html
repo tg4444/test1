@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style type="text/css">
-      /* Slideshow styles */
-    </style>
-    <script type="text/javascript" src="http://remarkjs.com/downloads/remark-latest.min.js"></script>
-    <script type="text/javascript">
-      function getParameter(name){
-         if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
-            return decodeURIComponent(name[1]);
-      }
-      
-      function remarkIt(){
-        alert('remarking it');
+
+<head>
+  <style type="text/css">
+    /* Slideshow styles */
+  </style>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  
+
+
+  <script type="text/javascript">
+    function getParameter(name) {
+      if (name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+        return decodeURIComponent(name[1]);
+    }
+
+
+    $(document).ready(function(){
+      // TEST URL: https://rawgit.com/tg4444/test1/master/PITCHME.md
+      var url = getParameter('url');
+      $.get(url, function(data){
+        $('#source').html(data);       
         var slideshow = remark.create();
-      }
-    </script>
-  </head>
-  <body>
-    <script type="text/javascript">
-      alert('LOADED!');
-    </script>
-    <iframe id="source" src="https://rawgit.com/tg4444/test1/master/PITCHME.md" onload="remarkIt()">
-    </textarea>
-    <script src="remark.js">
-    </script>
-    <script>
-       
-    </script>
-  </body>
+      });
+      
+      
+    });
+  </script>
+</head>
+
+<body>
+  <textarea id="source"></textarea>  
+  <script type="text/javascript" src="http://remarkjs.com/downloads/remark-latest.min.js"></script>
+</body>
+
 </html>
