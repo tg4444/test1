@@ -2,12 +2,11 @@
 <html>
 
 <head>
-  <style type="text/css">
-    /* Slideshow styles */
-  </style>
+  <link rel="stylesheet" href="https://rawgit.com/hakimel/reveal.js/master/css/reveal.css">
+  <link rel="stylesheet" href="https://rawgit.com/hakimel/reveal.js/master/css/theme/solarized.css" id="theme">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-
+  <script type="text/javascript" src="https://rawgit.com/hakimel/reveal.js/master/lib/js/head.min.js"></script>
+  
 
   <script type="text/javascript">
     function getParameter(name) {
@@ -17,31 +16,46 @@
 
 
     $(document).ready(function () {
-      /*
-      var revealScript = $('<script/>').attr('src','https://rawgit.com/hakimel/reveal.js/master/js/reveal.js').attr('type','text/javascript');
-      $(document.body).append(revealScript);
-      */
-      /*
-      $.getScript( "https://rawgit.com/hakimel/reveal.js/master/js/reveal.js", function( data, textStatus, jqxhr ) {
-        alert(data);
-        Reveal.initialize();
-      });*/
+      // TEST URL: https://rawgit.com/tg4444/test1/master/PITCHME.md
+      
+      var url = getParameter('url');
+      $('#source').attr('data-markdown',url);      
 
       $.getScript("https://rawgit.com/hakimel/reveal.js/master/js/reveal.js")
-        .done(function() {
-        Reveal.initialize();
-      });
+        .done(function () {
+          Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            dependencies: [
+              // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+
+              // Interpret Markdown in <section> elements
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+
+              // Syntax highlight for <code> elements
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+
+              // Zoom in and out with Alt+click
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/plugin/zoom-js/zoom.js', async: true },
+
+              // Speaker notes
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/plugin/notes/notes.js', async: true },
+
+              // MathJax
+              { src: 'https://rawgit.com/hakimel/reveal.js/master/plugin/math/math.js', async: true }
+            ]
+          });
+        });
+
+
+
+
 
       
-      
-      // TEST URL: https://rawgit.com/tg4444/test1/master/PITCHME.md
-      /*
-      var url = getParameter('url');
-      $.get(url, function (data) {
-        $('#source').html(data);
-        Reveal.initialize();
-      });
-      */
 
 
     });
@@ -49,15 +63,23 @@
 </head>
 
 <body>
-  <section data-markdown="https://rawgit.com/tg4444/test1/master/PITCHME.md">
-    <!--
-      data-separator="^\n\n\n"  
-         data-separator-vertical="^\n\n"  
-         data-separator-notes="^Note:"  
-         data-charset="iso-8859-15"
-         -->
-</section>
-  <!--<script type="text/javascript" src="https://rawgit.com/hakimel/reveal.js/master/js/reveal.js"></script>-->
+
+  <div class="reveal">
+
+    <div class="slides">  
+        <section id="source">
+                <!--
+          
+            data-separator="^\n\n\n"  
+              data-separator-vertical="^\n\n"  
+              data-separator-notes="^Note:"  
+              data-charset="iso-8859-15"
+      -->      
+      </section>
+      
+      <!--<script type="text/javascript" src="https://rawgit.com/hakimel/reveal.js/master/js/reveal.js"></script>-->
+    </div>
+  </div>
 </body>
 
 </html>
